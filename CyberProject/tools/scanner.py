@@ -1,2 +1,1 @@
-def scan():
-    print("Scanning...")
+print("Network Scanner Version 1.1")
