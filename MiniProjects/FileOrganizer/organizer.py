@@ -1,44 +1,56 @@
 import shutil
 from pathlib import Path
 
-# যে folder organize করব
-folder = Path("TestFolder")
 
-# File Type Mapping
-file_types = {
-    ".jpg": "Images",
-    ".png": "Images",
-    ".pdf": "Documents",
-    ".txt": "Documents",
-    ".mp3": "Music",
-    ".mp4": "Videos",
-    ".exe": "Executables",
-    ".zip": "Archives",
-    ".csv": "Data",
-    ".py": "Python Files"
-}
+def organize_files():
+    try:
+        folder = Path("TestFolder")
 
-# সব file scan করো
-for file in folder.iterdir():
+        if not folder.exists():
+            print("Folder not found!")
+            return
 
-    # Folder skip করো
-    if file.is_file():
+        moved_files = 0
+        summary = {}
 
-        extension = file.suffix
+        file_types = {
+            ".jpg": "Images",
+            ".png": "Images",
+            ".pdf": "Documents",
+            ".txt": "Documents",
+            ".mp3": "Music",
+            ".mp4": "Videos",
+            ".exe": "Executables",
+            ".zip": "Archives",
+        }
 
-        # Extension dictionary-তে থাকলে
-        if extension in file_types:
+        for file in folder.iterdir():
+            if file.is_file():
 
-            category = file_types[extension]
+                folder_name = file_types.get(file.suffix.lower(), "Others")
+                destination = folder / folder_name
 
-            # Category folder তৈরি করো
-            category_folder = folder / category
-            category_folder.mkdir(exist_ok=True)
+                destination.mkdir(exist_ok=True)
 
-            # Destination তৈরি করো
-            destination = category_folder / file.name
+                shutil.move(str(file), str(destination / file.name))
 
-            # File move করো
-            shutil.move(file, destination)
+                moved_files += 1
+                summary[folder_name] = summary.get(folder_name, 0) + 1
 
-            print(f"Moved: {file.name} -> {category}")
+        print(f"\nFiles Organized: {moved_files}")
+
+        print("\n========== SUMMARY ==========")
+
+        for category, count in summary.items():
+            print(f"{category:<15}: {count}")
+
+        print("-" * 28)
+        print(f"Total Files    : {moved_files}")
+        print("=" * 28)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    organize_files()
