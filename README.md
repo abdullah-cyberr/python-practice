@@ -4,35 +4,13 @@ Welcome to my Python learning repository.
 
 ## 📖 About
 
-This repository contains my Python practice codes and mini projects created while learning Python for Cyber Security.
+# 🛡️ Python Practice for Cyber Security
 
-## 📂 Repository Structure
+This repository contains my Python practice exercises, lesson code, and learning materials while studying Python for Cyber Security.
 
-```
-Python Project/
-├── CyberLogs/
-├── MiniProjects/
-├── Practice/
-└── Reports/
-```
+## Repository Structure
 
-## 🚀 Mini Projects
+- Practice/
+- CyberLogs/
 
-- ✅ Password Strength Checker
-- ⏳ File Organizer
-- ⏳ Port Scanner
-- ⏳ Password Generator
-- ⏳ Log Analyzer
-
-## 🛠 Skills
-
-- Python Basics
-- Object-Oriented Programming (OOP)
-- File Handling
-- Git & GitHub
-- Automation
-- Cyber Security
-
-## 👨‍💻 Author
-
-Abdullah
+> Complete projects are available in their own dedicated repositories.
